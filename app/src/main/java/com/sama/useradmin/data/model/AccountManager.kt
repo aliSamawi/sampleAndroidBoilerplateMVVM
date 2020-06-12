@@ -14,6 +14,11 @@ object AccountManager {
         Hawk.put(USER_KEY, user)
     }
 
+    fun updateUser(user : User){
+        Hawk.delete(USER_KEY)
+        insertUser(user)
+    }
+
     fun logoutUser(){
         Hawk.delete(USER_KEY)
     }

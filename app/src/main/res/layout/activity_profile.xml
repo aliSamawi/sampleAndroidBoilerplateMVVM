@@ -92,6 +92,14 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/btnLogout"
+            style="@style/RedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/logout" />
+
+        <Button
             android:id="@+id/btnDelete"
             style="@style/RedButton"
             android:layout_width="wrap_content"

@@ -14,7 +14,7 @@ class ProfileViewModel @Inject constructor(
 ) : ViewModel(){
 
     val validationError = MutableLiveData<String>()
-    val updateSuccess = MediatorLiveData<User>()
+    val updateSuccess = MutableLiveData<Boolean>()
 
     fun getCurrentUser() = AccountManager.getCurrentUser()
 
@@ -23,15 +23,16 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun removeCurrentUser() {
+        AccountManager.getCurrentUser()?.email?.let { repository.deleteUser(it) }
         AccountManager.logoutUser()
     }
 
-    fun updateCurrentUser(email:String, password:String, fullname:String, image:String){
-        if (email.isEmpty()){
+    fun updateCurrentUser(newEmail:String, password:String){
+        if (newEmail.isEmpty()){
             validationError.value = "email should not be empty."
             return
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()){
             validationError.value = "please enter valid email address."
             return
         }
@@ -45,8 +46,11 @@ class ProfileViewModel @Inject constructor(
             return
         }
 
-        val user = repository.insertUser(fullname, USER_ROLE.REGULAR,email,password,image)
-        AccountManager.insertUser(user)
-        updateSuccess.value = user
+        val currentUser = getCurrentUser()
+        currentUser?.let {
+            repository.updateUser(currentUser,newEmail,password)
+            AccountManager.updateUser(currentUser.copy(email = newEmail,password = password))
+            updateSuccess.value = true
+        }
     }
 }
