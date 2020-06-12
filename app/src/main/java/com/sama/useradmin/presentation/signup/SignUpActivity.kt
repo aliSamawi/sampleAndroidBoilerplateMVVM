@@ -1,10 +1,12 @@
 package com.sama.useradmin.presentation.signup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sama.useradmin.R
 import com.sama.useradmin.presentation.base.BaseActivity
+import com.sama.useradmin.presentation.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignUpActivity : BaseActivity<SignUpViewModel>() {
@@ -39,5 +41,13 @@ class SignUpActivity : BaseActivity<SignUpViewModel>() {
                     Snackbar.LENGTH_LONG
                 ).show()
         })
+
+        viewModel.signupSuccess.observe(this, Observer {
+            startActivity(Intent(this,HomeActivity::class.java).putExtra(
+                HomeActivity.USER,it
+            ))
+            finish()
+        })
+
     }
 }
