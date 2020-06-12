@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sama.useradmin.R
 import com.sama.useradmin.presentation.base.BaseActivity
-import com.sama.useradmin.presentation.home.HomeActivity
+import com.sama.useradmin.presentation.profile.ProfileActivity
 import com.sama.useradmin.presentation.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -28,8 +28,8 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
         btnLogin.setOnClickListener {
             hideKeyboard()
             viewModel.loginUser(
-                input_email_username.text.toString(),
-                input_password.text.toString())
+                inputEmail.text.toString(),
+                inputPassword.text.toString())
         }
 
         btnSignup.setOnClickListener {
@@ -48,8 +48,8 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
         })
 
         viewModel.loginSuccess.observe(this, Observer {
-            startActivity(Intent(this,HomeActivity::class.java).putExtra(
-                HomeActivity.USER,it
+            startActivity(Intent(this,ProfileActivity::class.java).putExtra(
+                ProfileActivity.USER,it
             ))
             finish()
         })

@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.sama.useradmin.presentation.home.HomeActivity"
+        <activity android:name="com.sama.useradmin.presentation.profile.ProfileActivity"
             android:launchMode="singleTask"
             />
 

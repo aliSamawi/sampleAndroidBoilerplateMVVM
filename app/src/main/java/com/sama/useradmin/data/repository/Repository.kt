@@ -10,4 +10,8 @@ interface Repository{
     fun insertUser(fullname:String, role:USER_ROLE, email:String, password:String, image:String) : User
 
     fun loginUser(email: String, password: String) : LiveData<User?>
+
+    fun updateUser(currentUser: User, newEmail: String, password: String)
+
+    fun deleteUser(email:String)
 }

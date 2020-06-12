@@ -46,4 +46,17 @@ class RepositoryImp @Inject constructor(
     override fun loginUser(email: String, password: String) =
         userDao.getUser(email, password)
 
+    override fun updateUser(currentUser: User, newEmail: String, password: String) {
+        GlobalScope.launch (Dispatchers.IO){
+            userDao.delete(currentUser.email)
+            userDao.insert(currentUser.copy(email = newEmail,password = password))
+        }
+    }
+
+    override fun deleteUser(email: String) {
+        GlobalScope.launch (Dispatchers.IO){
+            userDao.delete(email)
+        }
+    }
+
 }

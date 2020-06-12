@@ -1,6 +1,6 @@
 package com.sama.useradmin.di.module
 
-import com.sama.useradmin.presentation.home.HomeActivity
+import com.sama.useradmin.presentation.profile.ProfileActivity
 import com.sama.useradmin.presentation.login.LoginActivity
 import com.sama.useradmin.presentation.signup.SignUpActivity
 import com.sama.useradmin.presentation.splash.SplashActivity
@@ -14,7 +14,7 @@ abstract class ActivityBuilder {
     abstract fun contributeSplashActivity(): SplashActivity
 
     @ContributesAndroidInjector
-    abstract fun contributeHomeActivity(): HomeActivity
+    abstract fun contributeHomeActivity(): ProfileActivity
 
     @ContributesAndroidInjector
     abstract fun contributeSignupActivity(): SignUpActivity

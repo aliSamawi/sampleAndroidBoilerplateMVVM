@@ -1,7 +1,7 @@
 package com.sama.useradmin.di.module.view_model
 
 import androidx.lifecycle.ViewModel
-import com.sama.useradmin.presentation.home.HomeViewModel
+import com.sama.useradmin.presentation.profile.ProfileViewModel
 import com.sama.useradmin.presentation.login.LoginViewModel
 import com.sama.useradmin.presentation.signup.SignUpViewModel
 import com.sama.useradmin.presentation.splash.SplashViewModel
@@ -19,8 +19,8 @@ abstract class ViewModelsModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
+    @ViewModelKey(ProfileViewModel::class)
+    abstract fun bindHomeViewModel(viewModel: ProfileViewModel): ViewModel
 
     @Binds
     @IntoMap
