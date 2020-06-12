@@ -9,12 +9,16 @@ import javax.inject.Inject
 
 class AdminListViewModel @Inject constructor(private val repository: Repository): ViewModel() {
 
-
     private val getUsers = MediatorLiveData<List<User>>()
+
     fun getRegularUsers() : LiveData<List<User>>{
         getUsers.addSource(repository.getRegularUsers()){
             getUsers.postValue(it)
         }
         return getUsers
+    }
+
+    fun removeUser(email : String){
+        repository.deleteUser(email)
     }
 }

@@ -29,9 +29,11 @@ class AdminListActivity : BaseActivity<AdminListViewModel>() {
     }
 
     private fun setupViews(){
+        title = "Regular Users"
+
         userAdapter = UserAdapter(mutableListOf(), object : UserAdapter.UserRvAdapterCallback {
             override fun onRemoveClicked(user: User) {
-                //remove user
+                viewModel.removeUser(user.email)
             }
 
         })

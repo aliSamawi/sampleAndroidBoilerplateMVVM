@@ -91,7 +91,7 @@ class UserAdapter(var userList:MutableList<User>,
     }
 
     interface UserRvAdapterCallback {
-        fun onRemoveClicked(data: User)
+        fun onRemoveClicked(user: User)
     }
 
 }

@@ -18,7 +18,7 @@ class RepositoryImp @Inject constructor(
 ) : Repository {
 
     override fun getRegularUsers(): LiveData<List<User>> {
-        return userDao.getRegularUser()
+        return userDao.getRegularUser(USER_ROLE.REGULAR.type)
     }
 
     override fun insertUser(
