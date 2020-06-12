@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.sama.useradmin.R
 import com.sama.useradmin.presentation.base.BaseActivity
 import com.sama.useradmin.presentation.home.HomeActivity
+import com.sama.useradmin.presentation.login.LoginActivity
 
 
 class SplashActivity : BaseActivity<SplashViewModel>(){
@@ -20,7 +21,15 @@ class SplashActivity : BaseActivity<SplashViewModel>(){
 
         viewModel.splashLiveData.observe(this, Observer {
             when (it) {
-                is SplashState.HomeActivity -> {
+                is SplashState.Login ->{
+                    finish()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+                is SplashState.Admin ->{
+                    finish()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                }
+                is SplashState.Regular -> {
                     finish()
                     startActivity(Intent(this, HomeActivity::class.java))
                 }

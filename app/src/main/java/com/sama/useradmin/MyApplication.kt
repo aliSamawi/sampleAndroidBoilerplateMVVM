@@ -1,6 +1,7 @@
 package com.sama.useradmin
 
 import android.app.Application
+import com.orhanobut.hawk.Hawk
 import com.sama.useradmin.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -17,6 +18,7 @@ class MyApplication : Application(), HasAndroidInjector {
     override fun onCreate() {
         super.onCreate()
         setupComponent()
+        Hawk.init(this).build()
     }
 
     private fun setupComponent() {
