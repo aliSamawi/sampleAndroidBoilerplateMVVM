@@ -21,14 +21,15 @@ class RepositoryImp @Inject constructor(
         return userDao.getRegularUser()
     }
 
-    override fun signUpRegularUser(
+    override fun insertUser(
         fullname: String,
+        role : USER_ROLE,
         email: String,
         password: String,
         image: String
     ): User {
         val user = User(
-            USER_ROLE.REGULAR,
+            role,
             fullname,
             email,
             password,

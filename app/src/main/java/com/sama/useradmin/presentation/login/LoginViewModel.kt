@@ -4,6 +4,7 @@ import android.util.Patterns
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sama.useradmin.data.model.AccountManager
 import com.sama.useradmin.data.model.User
 import com.sama.useradmin.data.repository.Repository
 import java.util.regex.Pattern
@@ -39,6 +40,7 @@ class LoginViewModel @Inject constructor(
             if (it == null){
                 validationError.postValue("email or password is incorrect!")
             }else {
+                AccountManager.insertUser(it)
                 loginSuccess.postValue(it)
             }
         }

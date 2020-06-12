@@ -3,6 +3,8 @@ package com.sama.useradmin.presentation.signup
 import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sama.useradmin.data.model.AccountManager
+import com.sama.useradmin.data.model.USER_ROLE
 import com.sama.useradmin.data.model.User
 import com.sama.useradmin.data.repository.Repository
 import java.util.regex.Pattern
@@ -48,7 +50,9 @@ class SignUpViewModel @Inject constructor(
             return
         }
 
-        signupSuccess.value = repository.signUpRegularUser(fullname,email,password,"") //todo set image address
+        val user = repository.insertUser(fullname,USER_ROLE.REGULAR,email,password,"") //todo set image address
+        AccountManager.insertUser(user)
+        signupSuccess.value = user
 
     }
 }

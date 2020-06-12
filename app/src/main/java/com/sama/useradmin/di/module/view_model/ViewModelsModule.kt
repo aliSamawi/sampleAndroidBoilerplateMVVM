@@ -4,12 +4,18 @@ import androidx.lifecycle.ViewModel
 import com.sama.useradmin.presentation.home.HomeViewModel
 import com.sama.useradmin.presentation.login.LoginViewModel
 import com.sama.useradmin.presentation.signup.SignUpViewModel
+import com.sama.useradmin.presentation.splash.SplashViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
 abstract class ViewModelsModule {
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SplashViewModel::class)
+    abstract fun bindSplashViewModel(viewModel: SplashViewModel): ViewModel
 
     @Binds
     @IntoMap
