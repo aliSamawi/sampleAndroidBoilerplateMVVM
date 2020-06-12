@@ -15,7 +15,4 @@ abstract class UserDao {
 
     @Query("DELETE FROM user")
     abstract fun delete()
-
-    @Query("SELECT COUNT(id) FROM user")
-    abstract fun getCount(): Int?
 }

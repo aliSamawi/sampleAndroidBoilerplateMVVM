@@ -5,4 +5,6 @@ import com.sama.useradmin.data.model.User
 
 interface Repository{
     fun getRegularUsers(): LiveData<List<User>>
+
+    fun signUpRegularUser(fullname:String, email:String, password:String, image:String) : User
 }
