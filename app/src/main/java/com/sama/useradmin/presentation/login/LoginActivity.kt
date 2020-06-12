@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sama.useradmin.R
+import com.sama.useradmin.data.model.USER_ROLE
+import com.sama.useradmin.presentation.admin_list.AdminListActivity
 import com.sama.useradmin.presentation.base.BaseActivity
 import com.sama.useradmin.presentation.profile.ProfileActivity
 import com.sama.useradmin.presentation.signup.SignUpActivity
@@ -47,10 +49,15 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
                 ).show()
         })
 
-        viewModel.loginSuccess.observe(this, Observer {
-            startActivity(Intent(this,ProfileActivity::class.java).putExtra(
-                ProfileActivity.USER,it
-            ))
+        viewModel.loginSuccess.observe(this, Observer {user->
+            when (user.role) {
+                USER_ROLE.REGULAR -> {
+                    startActivity(Intent(this,ProfileActivity::class.java))
+                }
+                else -> {
+                    startActivity(Intent(this,AdminListActivity::class.java))
+                }
+            }
             finish()
         })
 

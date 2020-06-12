@@ -17,8 +17,8 @@ abstract class UserDao {
     abstract fun update(prevEmail: String, newEmail:String, newPassword:String)
 
 
-    @Query("SELECT * FROM  user")
-    abstract fun getRegularUser(): LiveData<List<User>>
+    @Query("SELECT * FROM  user WHERE role = :role")
+    abstract fun getRegularUser(role:String): LiveData<List<User>>
 
     @Query("SELECT * FROM user WHERE email = :email AND password = :password")
     abstract fun getUser(email:String, password:String): LiveData<User?>

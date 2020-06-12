@@ -48,9 +48,7 @@ class SignUpActivity : BaseActivity<SignUpViewModel>() {
         })
 
         viewModel.signupSuccess.observe(this, Observer {
-            startActivity(Intent(this,ProfileActivity::class.java).putExtra(
-                ProfileActivity.USER,it
-            ))
+            startActivity(Intent(this,ProfileActivity::class.java))
             finishAffinity()
         })
 

@@ -1,5 +1,6 @@
 package com.sama.useradmin.di.module
 
+import com.sama.useradmin.presentation.admin_list.AdminListActivity
 import com.sama.useradmin.presentation.profile.ProfileActivity
 import com.sama.useradmin.presentation.login.LoginActivity
 import com.sama.useradmin.presentation.signup.SignUpActivity
@@ -21,4 +22,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract fun contributeLoginActivity(): LoginActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeAdminListActivity(): AdminListActivity
 }
