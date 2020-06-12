@@ -57,13 +57,13 @@ class ProfileActivity : BaseActivity<ProfileViewModel>() {
         btnDelete.setOnClickListener {
             viewModel.removeCurrentUser()
             startActivity(Intent(this,LoginActivity::class.java))
-            finish()
+            finishAffinity()
         }
 
         btnLogout.setOnClickListener {
             viewModel.logoutUser()
             startActivity(Intent(this,LoginActivity::class.java))
-            finish()
+            finishAffinity()
         }
     }
 
