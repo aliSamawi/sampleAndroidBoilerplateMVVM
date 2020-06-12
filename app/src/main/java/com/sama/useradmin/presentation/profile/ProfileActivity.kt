@@ -28,7 +28,7 @@ class ProfileActivity : BaseActivity<ProfileViewModel>() {
     }
 
     private fun setupViews(){
-        title = "welcome"
+        title = "profile"
 
         val user = viewModel.getCurrentUser()
         inputEmail.setText(user?.email)
