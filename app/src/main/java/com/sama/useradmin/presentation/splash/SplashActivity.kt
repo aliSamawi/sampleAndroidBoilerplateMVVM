@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.sama.useradmin.R
 import com.sama.useradmin.presentation.base.BaseActivity
-import com.sama.useradmin.presentation.home.HomeActivity
+import com.sama.useradmin.presentation.profile.ProfileActivity
 import com.sama.useradmin.presentation.login.LoginActivity
 
 
@@ -27,11 +27,11 @@ class SplashActivity : BaseActivity<SplashViewModel>(){
                 }
                 is SplashState.Admin ->{
                     finish()
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    startActivity(Intent(this, ProfileActivity::class.java))
                 }
                 is SplashState.Regular -> {
                     finish()
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    startActivity(Intent(this, ProfileActivity::class.java))
                 }
             }
         })

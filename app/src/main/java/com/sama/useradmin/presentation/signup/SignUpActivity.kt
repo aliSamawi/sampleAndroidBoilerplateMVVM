@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sama.useradmin.R
 import com.sama.useradmin.presentation.base.BaseActivity
-import com.sama.useradmin.presentation.home.HomeActivity
+import com.sama.useradmin.presentation.profile.ProfileActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 
 
@@ -31,8 +31,8 @@ class SignUpActivity : BaseActivity<SignUpViewModel>() {
         btnSignup.setOnClickListener {
             hideKeyboard()
             viewModel.signUpUser(input_fullName.text.toString(),
-                input_email_username.text.toString(),
-                input_password.text.toString(),
+                inputEmail.text.toString(),
+                inputPassword.text.toString(),
                 input_confirm_password.text.toString())
         }
     }
@@ -48,8 +48,8 @@ class SignUpActivity : BaseActivity<SignUpViewModel>() {
         })
 
         viewModel.signupSuccess.observe(this, Observer {
-            startActivity(Intent(this,HomeActivity::class.java).putExtra(
-                HomeActivity.USER,it
+            startActivity(Intent(this,ProfileActivity::class.java).putExtra(
+                ProfileActivity.USER,it
             ))
             finishAffinity()
         })
