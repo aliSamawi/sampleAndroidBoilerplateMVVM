@@ -7,4 +7,6 @@ interface Repository{
     fun getRegularUsers(): LiveData<List<User>>
 
     fun signUpRegularUser(fullname:String, email:String, password:String, image:String) : User
+
+    fun loginUser(email: String, password: String) : LiveData<User?>
 }

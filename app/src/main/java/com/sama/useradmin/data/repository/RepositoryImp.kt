@@ -42,4 +42,7 @@ class RepositoryImp @Inject constructor(
         return user
     }
 
+    override fun loginUser(email: String, password: String) =
+        userDao.getUser(email, password)
+
 }
