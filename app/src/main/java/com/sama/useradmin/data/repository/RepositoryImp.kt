@@ -48,6 +48,7 @@ class RepositoryImp @Inject constructor(
 
     override fun updateUser(currentUser: User, newEmail: String, password: String) {
         GlobalScope.launch (Dispatchers.IO){
+            // can't update directly because email is primary key
             userDao.delete(currentUser.email)
             userDao.insert(currentUser.copy(email = newEmail,password = password))
         }
