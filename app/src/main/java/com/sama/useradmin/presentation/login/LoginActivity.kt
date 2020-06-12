@@ -1,20 +1,19 @@
-package com.sama.useradmin.presentation.signup
+package com.sama.useradmin.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sama.useradmin.R
 import com.sama.useradmin.presentation.base.BaseActivity
 import com.sama.useradmin.presentation.home.HomeActivity
-import kotlinx.android.synthetic.main.activity_signup.*
+import com.sama.useradmin.presentation.signup.SignUpActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
+class LoginActivity : BaseActivity<LoginViewModel>() {
+    override val viewModel: LoginViewModel by getLazyViewModel()
 
-class SignUpActivity : BaseActivity<SignUpViewModel>() {
-    override val viewModel: SignUpViewModel by getLazyViewModel()
-
-    override fun layoutId(): Int = R.layout.activity_signup
+    override fun layoutId(): Int = R.layout.activity_login
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,16 +23,17 @@ class SignUpActivity : BaseActivity<SignUpViewModel>() {
     }
 
     private fun setUpViews(){
-        title = getString(R.string.signup)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        title = getString(R.string.login)
+
+        btnLogin.setOnClickListener {
+            hideKeyboard()
+            viewModel.loginUser(
+                input_email_username.text.toString(),
+                input_password.text.toString())
+        }
 
         btnSignup.setOnClickListener {
-            hideKeyboard()
-            viewModel.signUpUser(input_fullName.text.toString(),
-                input_email_username.text.toString(),
-                input_password.text.toString(),
-                input_confirm_password.text.toString())
+            startActivity(Intent(this,SignUpActivity::class.java))
         }
     }
 
@@ -47,19 +47,12 @@ class SignUpActivity : BaseActivity<SignUpViewModel>() {
                 ).show()
         })
 
-        viewModel.signupSuccess.observe(this, Observer {
+        viewModel.loginSuccess.observe(this, Observer {
             startActivity(Intent(this,HomeActivity::class.java).putExtra(
                 HomeActivity.USER,it
             ))
-            finishAffinity()
+            finish()
         })
 
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

@@ -13,6 +13,9 @@ abstract class UserDao {
     @Query("SELECT * FROM  user")
     abstract fun getRegularUser(): LiveData<List<User>>
 
+    @Query("SELECT * FROM user WHERE email = :email AND password = :password")
+    abstract fun getUser(email:String, password:String): LiveData<User?>
+
     @Query("DELETE FROM user")
     abstract fun delete()
 }

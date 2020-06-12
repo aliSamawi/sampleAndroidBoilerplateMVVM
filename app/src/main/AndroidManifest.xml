@@ -10,12 +10,20 @@
         android:supportsRtl="true"
         android:name=".MyApplication"
         android:theme="@style/AppTheme">
+
         <activity android:name="com.sama.useradmin.presentation.home.HomeActivity"
             android:launchMode="singleTask"
             />
 
         <activity android:name=".presentation.signup.SignUpActivity"
             android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden"
+            android:launchMode="singleTask"
+            />
+
+        <activity android:name=".presentation.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
